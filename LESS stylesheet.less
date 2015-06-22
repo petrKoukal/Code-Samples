@@ -1,0 +1,100 @@
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+#translucent {
+  .background(@color: @white, @alpha: 1) {
+    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+  }
+}
+
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+#gradient {
+  .horizontal(@startColor: #e5e5e5, @endColor: #fff) {
+    background-color: @endColor;
+    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(to right, @startColor, @endColor); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down
+  }
+}
+
+// Transitions
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity / 100;
+  filter: ~"alpha(opacity=@{opacity})";
+}
+
+@orange: #B23B00;
+@link: #B13B00;
+@gray: #CBCBCB;
+@bg: #F0F0F0;
+@black: #1A1A1A;
+
+.bizIcon {
+  display: inline-block;
+  background: url("../img/sprite.png") no-repeat;
+}
+body#ns-biz {
+  font-family: 'Source Sans Pro', sans-serif, "Helvetica Neue", Helvetica, Arial;
+  background-color: @bg;
+  color: @black;
+  .iframe-wrapper {
+    width: 100%; height: 300px;
+  }
+  iframe {
+    overflow: hidden;
+    border: none;
+  }
+
+  header {
+    width: 100%;
+    z-index: 1;
+    height: 420px;
+  }
+  .subtitle {
+    font-size: 23px;
+    color: @orange;
+    font-weight: 300;
+    margin-bottom: 55px;
+    text-align: center;
+  }
+  #carousel-index {
+    overflow: hidden;
+    &.stuck {
+      position: fixed;
+      top: -270px;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      img {
+      }
+    }
+    img {
+      height: 350px;
+      min-width: 1300px;
+      width: 102%;
+      margin-top: -5px;
+      margin-left: -5px;
+      max-width: 2000%;
+      object-fit: cover;
+    }
+  }
+}
