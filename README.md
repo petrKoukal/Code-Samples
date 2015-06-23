@@ -19,7 +19,7 @@ In the following files I demonstrate my usage of Javascript [require.js AMD modu
 - ```ProductModalController.js```
 - ```ComponentPageView.js```
 - ```GoogleMarkerModel.js```
-- 
+
 ### Controller
 A simple controller that binds some Bootstrap Modal events and triggers rendering of a Google Map. Google Maps are a little bit tricky in rendering, because they can be properly displayed only once the DOM is final and their parent tags are already displayed.
 
